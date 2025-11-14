@@ -1,0 +1,6 @@
+
+gymnasium[atari]
+ale-py
+autorom
+stable-baselines3[extra]
+gymnasium[accept-rom-license]
