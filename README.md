@@ -192,6 +192,16 @@ Modify these values in `train.py` before training to experiment with different c
 **Agent Playing River Raid**
 
 
+<video width="800" autoplay loop muted>
+  <source src="https://github.com/user-attachments/assets/0442358d-e8c8-4bfb-b000-a7a877c7bbb6
+" type="video/mp4">
+ 
+</video>
+
+
+
+
+
 
 
 ## Notes
