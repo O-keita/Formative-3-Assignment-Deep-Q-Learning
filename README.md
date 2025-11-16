@@ -2,6 +2,24 @@
 
 This project implements a Deep Q-Learning (DQN) agent to play the Atari game Riverraid using the Stable Baselines3 library and Gymnasium. It serves as a formative assignment for the Machine Learning course, demonstrating reinforcement learning techniques on classic Atari environments.
 
+## Environment Details
+
+- **Game** : River Raid (ALE/Riverraid-v5)
+- **Action Space:** : Discrete(18)
+- **Observation Space** :  (210, 160, 3) RGB image
+- **Objective** : Control a jet to destroy enemy objects while avoiding collisions and managing fuel
+
+  ### Scoring System
+| Enemy Object | Score Points |
+|--------------|--------------|
+| Tanker       | 30           |
+| Helicopter   | 60           |
+| Fuel Depot   | 80           |
+| Jet          | 100          |
+| Bridge       | 500          |
+
+   
+
 ## Project Structure
 
 - `train.py`: Main training script for the DQN agent
@@ -142,6 +160,37 @@ Modify these values in `train.py` before training to experiment with different c
 
 - Python 3.8+
 - See `requirements.txt` for specific package versions
+
+
+## Hyperparameter Experiments
+   ### Omar Keita
+   
+   | Exp | Time Steps | Learning Rate (lr) | Gamma (γ) | Batch Size | ε_start | ε_end | ε_decay | Observed Behavior |
+   |-----|------------|--------------------|-----------|-------------|----------|--------|----------|--------------------|
+   | 1 | 100,000 | 0.00001 | 0.99 | 32 | default | 0.01 | 0.1 | Mean reward **4.7 ± 2.62**, episode length **29.1 ± 13.8**. Agent dies early, barely survives initial obstacles. Needs more training and tuning. |
+   | 2 | 100,000 | 0.0005 | 0.99 | 64 | 1.0 | 0.01 | 0.2 | Mean reward **7.32**, noticeably better than Exp 1. Agent survives slightly longer and begins learning basic movement patterns. |
+   | 3 | 250,000 | 0.0005 | 0.99 | 64 | 1.0 | 0.02 | 0.4 | Mean reward **8.90 ± 6.65**. Strong early exploration, more exploitation after ~100k steps. Avg episode length ~33 steps. Completed **9728 episodes**. Shows gradual improvement. |
+   | 4 | 250,000 | 0.0003 | 0.99 | 64 | 1.0 | 0.03 | 0.5 | Mean reward **9.28 ± 7.46**. More balanced exploration → better stability. Avg episode length ~38 steps. Completed **9004 episodes**. Loss observed ~0.115. |
+   | 5 | 250,000 | 0.00003 | 0.79 | 128 | 1.0 | 0.002 | 0.3 | Mean reward dropped — likely due to **lower gamma** and **very small decay**. But completed **9628 episodes**, showing higher turnover. Needs higher γ and slower decay. |
+   | 6 | 300,000 | 0.0003 | 0.79 | 128 | 1.0 | 0.02 | 0.5 | The mean reward improved to 9.4, and the agent completed 11,252 episodes. This reflects clear progress, performance became more stable, and the agent survived longer before termination. However, further tuning is still needed to achieve stronger and more consistent gameplay. |
+
+   ### Jean Piere  Niyongabo
+   | Exp | Time Steps | Learning Rate (lr) | Gamma (γ) | Batch Size | ε_start | ε_end | ε_decay | Observed Behavior |
+   |-----|------------|--------------------|-----------|-------------|----------|--------|----------|--------------------|
+
+
+   ### Lievin Murayire
+   | Exp | Time Steps | Learning Rate (lr) | Gamma (γ) | Batch Size | ε_start | ε_end | ε_decay | Observed Behavior |
+   |-----|------------|--------------------|-----------|-------------|----------|--------|----------|--------------------|
+
+
+   ### Jean Paul Irakoze
+   | Exp | Time Steps | Learning Rate (lr) | Gamma (γ) | Batch Size | ε_start | ε_end | ε_decay | Observed Behavior |
+   |-----|------------|--------------------|-----------|-------------|----------|--------|----------|--------------------|
+   
+## Demo Video
+**Agent Playing River Raid**
+
 
 ## Notes
 
