@@ -50,7 +50,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--env-id", type=str, default="ALE/Breakout-v5",
                         help="Atari env id (MUST match what you used in training).")
-    parser.add_argument("--model-path", type=str, default="dqn_model.zip",
+    parser.add_argument("--model-path", type=str, default="checkpoints/CnnPolicy/best_model/best_model.zip",
                         help="Path to the saved model from train.py")
     parser.add_argument("--episodes", type=int, default=5,
                         help="How many episodes to run.")

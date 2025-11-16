@@ -14,15 +14,15 @@ ENV_ID = "ALE/Riverraid-v5"
 N_ENVS = 4
 N_STACK = 4
 SEED = 42
-TIMESTEPS = 100_000
+TIMESTEPS =300_000
 
 # Hyperparameters for this run
-LEARNING_RATE = 1e-4
-BATCH_SIZE = 32
-GAMMA = 0.99
-EXPLORATION_FRACTION = 0.1
+LEARNING_RATE = 3e-4
+BATCH_SIZE = 128
+GAMMA = 0.79
+EXPLORATION_FRACTION = 0.5 #decay
 
-CHECKPOINT_FREQ = 5_000
+CHECKPOINT_FREQ = 10_000
 EVAL_FREQ = 1_000
 N_EVAL_EPISODES = 50  
 
@@ -54,13 +54,14 @@ def train_dqn(policy_name="CnnPolicy", env_id=ENV_ID):
         env=train_env,
         learning_rate=LEARNING_RATE,
         batch_size=BATCH_SIZE,
-        buffer_size=20_000,
-        learning_starts=30_000,
-        target_update_interval=5000,
+        buffer_size=80_000,
+        learning_starts=60_000,
+        target_update_interval=10000,
+        exploration_initial_eps=1.0,
         train_freq=4,
         gamma=GAMMA,
         exploration_fraction=EXPLORATION_FRACTION,
-        exploration_final_eps=0.01,
+        exploration_final_eps=0.02,
         verbose=1,
         tensorboard_log="logs/"
     )
