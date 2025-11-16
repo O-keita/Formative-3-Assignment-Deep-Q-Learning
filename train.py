@@ -14,7 +14,7 @@ ENV_ID = "ALE/Riverraid-v5"
 N_ENVS = 4
 N_STACK = 4
 SEED = 42
-TIMESTEPS = 100_000
+TIMESTEPS = 1_000
 
 # Hyperparameters for this run
 LEARNING_RATE = 1e-4

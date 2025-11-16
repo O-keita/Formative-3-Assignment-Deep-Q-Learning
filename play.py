@@ -2,7 +2,8 @@ import argparse
 import time
 import numpy as np
 import gymnasium as gym
-from gymnasium.wrappers import AtariPreprocessing, TransformObservation, RecordVideo, FrameStackOberservation as FrameStack
+import ale_py
+from gymnasium.wrappers import AtariPreprocessing, TransformObservation, RecordVideo, FrameStackObservation as FrameStack
 from stable_baselines3 import DQN
 
 
@@ -11,7 +12,7 @@ def make_eval_env(env_id: str,
                   frame_stack: int = 4,
                   grayscale: bool = True) -> gym.Env:
 
-    env = gym.make(env_id, render_mode=render_mode)
+    env = gym.make(env_id, render_mode=render_mode, frameskip=1)
     # Typical DQN Atari preprocessing:
     env = AtariPreprocessing(
         env,
