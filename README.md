@@ -43,6 +43,13 @@ This project implements a Deep Q-Learning (DQN) agent to play the Atari game Riv
    - `autorom`: Automatic ROM installation
    - `stable-baselines3[extra]`: DQN implementation with extra features
    - `gymnasium[accept-rom-license]`: ROM license acceptance
+   - `moviepy`: Video recording for gameplay demonstrations
+
+4. Install Atari ROMs:
+   ```bash
+   AutoROM --accept-license
+   ```
+   This downloads and installs the Atari 2600 ROMs required for the games.
 
 ## Usage
 
@@ -79,6 +86,36 @@ Additional options:
 Example with video recording:
 ```bash
 python play.py --model-path checkpoints/CnnPolicy/dqn_model_final.zip --record-video ./videos --no-render
+```
+
+### Advanced Usage Examples
+
+Here are various command examples for different scenarios:
+
+**Play with GUI rendering (opens game window):**
+```bash
+python play.py --env-id ALE/Riverraid-v5 --model-path checkpoints/CnnPolicy/dqn_model_final.zip
+```
+
+**Play without rendering (headless/server environments):**
+```bash
+python play.py --env-id ALE/Riverraid-v5 --model-path checkpoints/CnnPolicy/dqn_model_final.zip --no-render --episodes 1
+```
+
+**Play multiple episodes:**
+```bash
+python play.py --env-id ALE/Riverraid-v5 --model-path checkpoints/CnnPolicy/dqn_model_final.zip --no-render --episodes 3
+```
+
+**Record gameplay video:**
+```bash
+python play.py --env-id ALE/Riverraid-v5 --model-path checkpoints/CnnPolicy/dqn_model_final.zip --record-video ./videos --no-render --episodes 1
+```
+
+**Note:** All commands should be run from the activated virtual environment:
+```bash
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Then run any of the above commands
 ```
 
 ### Visualizing the Environment
