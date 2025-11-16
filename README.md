@@ -191,7 +191,7 @@ Modify these values in `train.py` before training to experiment with different c
 ## Demo Video
 **Agent Playing River Raid**
 
-<video src="videos/dqn_play-episode-0.mp4" autoplay loop muted width="400">
+
 
 
 ## Notes
