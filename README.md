@@ -22,7 +22,7 @@ This project implements a Deep Q-Learning (DQN) agent to play the Atari game Riv
 
 1. Clone this repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/O-keita/Formative-3-Assignment-Deep-Q-Learning.git
    cd Formative-3-Assignment-Deep-Q-Learning
    ```
 
