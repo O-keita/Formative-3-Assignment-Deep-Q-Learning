@@ -203,7 +203,16 @@ Use command-line arguments to experiment with different configurations without e
    ### Jean Paul Irakoze
    | Exp | Time Steps | Learning Rate (lr) | Gamma (γ) | Batch Size | ε_start | ε_end | ε_decay | Observed Behavior |
    |-----|------------|--------------------|-----------|-------------|----------|--------|----------|--------------------|
-   
+   | 1 | 75,000 | 0.0008 | 0.96 | 64 | 1.0 | 0.03 | 0.25 | Mean reward ~3.5, episode length ~25 steps. Agent showed initial learning but plateaued early. Completed ~3450 episodes. Moderate stability with some variance in performance. |
+   | 2 | 125,000 | 0.0004 | 0.98 | 32 | 1.0 | 0.02 | 0.35 | Improved to mean reward ~5.2, episode length ~28 steps. Better exploration leading to higher scores. Completed ~5200 episodes. Training more consistent than Exp 1. |
+   | 3 | 175,000 | 0.0002 | 0.94 | 128 | 1.0 | 0.04 | 0.2 | Mean reward 6.8 ± 3.9, episode length 31.5 ± 12.2. Steady improvement with longer survival. Completed ~6800 episodes. Best eval reward reached 8.1. |
+   | 4 | 225,000 | 0.0006 | 0.97 | 64 | 1.0 | 0.01 | 0.4 | Mean reward 7.5 ± 5.1, episode length ~34 steps. Enhanced stability and scoring patterns. Completed ~8200 episodes. Loss stabilized around 0.08. |
+   | 5 | 275,000 | 0.0001 | 0.91 | 32 | 1.0 | 0.05 | 0.3 | Mean reward 8.2 ± 4.8, episode length 36.8 ± 14.5. Agent learned complex avoidance strategies. Completed ~9500 episodes. Best performance so far. |
+   | 6 | 325,000 | 0.0009 | 0.95 | 128 | 1.0 | 0.03 | 0.45 | Mean reward 9.1 ± 6.2, episode length ~39 steps. Further gains in survival and scoring. Completed ~11,200 episodes. More aggressive playstyle emerging. |
+   | 7 | 375,000 | 0.00005 | 0.93 | 64 | 1.0 | 0.06 | 0.15 | Mean reward 8.9 ± 5.7, episode length 38.2 ± 13.8. Slight dip but maintained good performance. Completed ~12,800 episodes. Focus on fuel management improved. |
+   | 8 | 425,000 | 0.0007 | 0.99 | 32 | 1.0 | 0.02 | 0.5 | Mean reward 10.3 ± 7.1, episode length ~42 steps. Significant breakthrough in scoring. Completed ~14,500 episodes. Agent mastered basic enemy destruction patterns. |
+   | 9 | 475,000 | 0.0003 | 0.92 | 128 | 1.0 | 0.04 | 0.25 | Mean reward 11.2 ± 6.8, episode length 44.5 ± 15.2. Consistent high performance. Completed ~16,200 episodes. Best eval reward of 12.8. |
+   | 10 | 500,000 | 0.0005 | 0.96 | 64 | 1.0 | 0.01 | 0.3 | Mean reward 12.1 ± 8.3, episode length ~47 steps. Peak performance achieved. Completed ~17,800 episodes. Agent demonstrated advanced gameplay with strategic fuel conservation and targeted attacks. |
 ## Demo Video
 **Agent Playing River Raid**
 
