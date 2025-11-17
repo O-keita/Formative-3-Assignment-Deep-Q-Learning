@@ -28,6 +28,29 @@ This project implements a Deep Q-Learning (DQN) agent to play the Atari game Riv
 - `requirements.txt`: Python dependencies
 - `.gitignore`: Git ignore file for virtual environments, checkpoints, and logs
 
+## Team Collaboration
+
+This project was collaboratively developed by a team of 4 members, with a well-distributed workload ensuring comprehensive coverage of all components. The team demonstrated strong collaboration through regular meetings and shared responsibilities in hyperparameter optimization.
+
+### Individual Contributions and Roles
+
+- **Jean Pierre Niyongabo** and **Omar Keita**: Led the development of `train.py`, focusing on the core training infrastructure. They implemented the DQN training loop, integrated Stable Baselines3, added checkpointing, logging with TensorBoard, and parallel environment training. Their work ensured robust training capabilities with configurable hyperparameters.
+
+- **Jean Paul Irakoze** and **Lievin Murayire**: Specialized in `play.py`, creating comprehensive evaluation tools. They developed gameplay rendering, video recording functionality using MoviePy, performance metrics calculation, and headless evaluation options. Their contributions enabled thorough testing and demonstration of trained models.
+
+- **All Team Members**: Each member independently conducted extensive hyperparameter tuning, performing 10 separate experiments to optimize the DQN agent's performance on Riverraid. The results of these experiments are documented in detail below, showcasing individual research efforts and collective insights into parameter optimization.
+
+### Collaboration Process
+
+The team held 4 structured meetings to facilitate effective collaboration:
+
+1. **Task Delegation Meeting**: Initial planning session where responsibilities were assigned based on member strengths, ensuring balanced workload distribution.
+2. **Progress Tracking Meetings**: Regular check-ins to review code developments, share findings from hyperparameter experiments, and address technical challenges collaboratively.
+3. **Agent Play Recording Session**: Dedicated meeting to coordinate gameplay demonstrations, video captures, and performance evaluations for documentation purposes.
+4. **Submission Process Meeting**: Final review meeting to integrate all components, verify completeness, and prepare the assignment for submission.
+
+This collaborative approach resulted in a complete Deep Q-Learning implementation with thorough documentation of both code development and experimental optimization.
+
 ## Features
 
 - **Training**: Train a DQN agent on Atari Riverraid with configurable hyperparameters
