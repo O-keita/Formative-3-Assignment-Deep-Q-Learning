@@ -179,6 +179,10 @@ Use command-line arguments to experiment with different configurations without e
    | 4 | 250,000 | 0.0003 | 0.99 | 64 | 1.0 | 0.03 | 0.5 | Mean reward **9.28 ± 7.46**. More balanced exploration → better stability. Avg episode length ~38 steps. Completed **9004 episodes**. Loss observed ~0.115. |
    | 5 | 250,000 | 0.00003 | 0.79 | 128 | 1.0 | 0.002 | 0.3 | Mean reward dropped — likely due to **lower gamma** and **very small decay**. But completed **9628 episodes**, showing higher turnover. Needs higher γ and slower decay. |
    | 6 | 300,000 | 0.0003 | 0.79 | 128 | 1.0 | 0.02 | 0.5 | The mean reward improved to 9.4, and the agent completed 11,252 episodes. This reflects clear progress, performance became more stable, and the agent survived longer before termination. However, further tuning is still needed to achieve stronger and more consistent gameplay. |
+   | 7 | 500,000 | 0.00003 | 0.99 | 128 | 1.0 | 0.02 | 0.5 | Very low learning rate → agent does not improve despite increasing timesteps. Mean reward drops to **8**, mean episode length ~**28**. |
+   | 8 | 1,500,000 | 0.00003 | 0.99 | 128 | 1.0 | 0.02 | 0.4 | Slight improvement in mean reward, but still not significant. Large timesteps but poor learning—likely due to very low lr and relatively high exploration fraction. Needs higher lr and slower exploration decay. |
+   | 9 | 2,000,000 | 0.001 | 0.99 | 32 | 1.0 | 0.01 | 0.1 | |
+
 
    ### Jean Pierre  Niyongabo
    | Exp | Time Steps | Learning Rate (lr) | Gamma (γ) | Batch Size | ε_start | ε_end | ε_decay | Observed Behavior |
@@ -198,6 +202,15 @@ Use command-line arguments to experiment with different configurations without e
    ### Lievin Murayire
    | Exp | Time Steps | Learning Rate (lr) | Gamma (γ) | Batch Size | ε_start | ε_end | ε_decay | Observed Behavior |
    |-----|------------|--------------------|-----------|-------------|----------|--------|----------|--------------------|
+   | 1 | 100,000 | 0.0001 | 0.95 | 32 | 1.0 | 0.05 | 0.1 | We consistently achieved 440 points across all the episodes. The game survived approximately 200-206 steps per episode before termination. |
+   | 2 | 110,000 | 0.0005 | 0.98 | 64 | 1.0 | 0.01 | 0.2 | Mean Reward: 1792.0, Std: 333.8. We got a much better performance than in Experiment 1 (440 → 1792 average). It learned more aggressive strategies that can reach up to 2260 reward, but sometimes ends early with lows around 1040. So it’s stronger overall, but less stable. |
+   | 3 | 120,000 | 0.001 | 0.99 | 32 | 1.0 | 0.05 | 0.3 | Moderate performance (between Exp 1 and 2). The episodes ran longer (about 1028 steps), so it survived well but earned rewards less efficiently. The strategy looked cautious and risk-averse, with one big drop to 470 that shows the approach can occasionally break down in certain situations. |
+   | 4 | 130,000 | 0.005 | 0.995 | 128 | 1.0 | 0.01 | 0.5 | Complete training failure. Despite the high learning rate (0.005) and slower exploration decay (0.5), it didn’t learn any meaningful strategy. It consistently lasted around 204 steps but scored zero points, meaning it only figured out basic survival and never optimized for rewards. The aggressive hyperparameters likely made the learning unstable. |
+   | 5 | 140,000 | 0.001 | 0.99 | 128 | 0.9 | 0.05 | 0.2 | Mean reward = 1484.0, Std = 474.7. Solid mid-level performance with moderate variance. The more conservative exploration (eps_start = 0.9) helped keep learning stable while still improving rewards, leading to consistent mid-tier results. |
+   | 6 | 140,000 | 0.0005 | 0.95 | 64 | 1.0 | 0.1 | 0.1 | I ran 5 episodes with rendering on. The results showed strong runs (1870, 2410, 1910) averaging around 2000, and weak runs (360, 520) where it failed early. This shows the inconsistent behavior. |
+   | 7 | 240,000 | 0.001 | 0.98 | 64 | 1.0 | 0.01 | 0.4 | Results: Mean = 2232.0, Std = 355.4. This is the best performance so far, with consistently high rewards in every episode. The higher learning rate (0.001), gamma of 0.98, and moderate exploration decay (0.4) led to strong, stable exploitation and the highest average reward I’ve seen yet. |
+   | 8 | 300,000 | 0.002 | 0.99 | 32 | 1.0 | 0.05 | 0.25 | Perfect consistency but not great performance. The higher learning rate (0.002) made it converge to one fixed strategy with zero variance, likely overfitting or settling too early. It’s stable and repeats the same score every time, but the strategy isn’t optimal. |
+
 
 
    ### Jean Paul Irakoze
@@ -213,9 +226,23 @@ Use command-line arguments to experiment with different configurations without e
    | 8 | 425,000 | 0.0007 | 0.99 | 32 | 1.0 | 0.02 | 0.5 | Mean reward 10.3 ± 7.1, episode length ~42 steps. Significant breakthrough in scoring. Completed ~14,500 episodes. Agent mastered basic enemy destruction patterns. |
    | 9 | 475,000 | 0.0003 | 0.92 | 128 | 1.0 | 0.04 | 0.25 | Mean reward 11.2 ± 6.8, episode length 44.5 ± 15.2. Consistent high performance. Completed ~16,200 episodes. Best eval reward of 12.8. |
    | 10 | 500,000 | 0.0005 | 0.96 | 64 | 1.0 | 0.01 | 0.3 | Mean reward 12.1 ± 8.3, episode length ~47 steps. Peak performance achieved. Completed ~17,800 episodes. Agent demonstrated advanced gameplay with strategic fuel conservation and targeted attacks. |
+
+
+## Best Hyperparameter Configuration
+
+   - **Time Steps:** 2,000,000  
+   - **Learning Rate (lr):** 0.0001  
+   - **Gamma (γ):** 0.99  
+   - **Batch Size:** 32  
+   - **ε_start:** 1.0  
+   - **ε_end:** 0.01  
+   - **ε_decay:** 0.1  
+
+   **Observed Behavior:**  
+   This configuration provided the most stable and consistent learning. The agent survived longer in each episode, learned patterns effectively, and achieved the highest cumulative rewards. Gameplay became noticeably more strategic and less prone to early termination, demonstrating clear improvement over previous experiments.
+
 ## Demo Video
 **Agent Playing River Raid**
-
 
 https://github.com/user-attachments/assets/2c0e1c3d-f644-4dff-865c-8a86bc5b38bc
 
