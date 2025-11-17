@@ -105,7 +105,7 @@ def main():
         t0 = time.perf_counter()
 
         while not done:
-            action, _ = model.predict(obs, deterministic=True)  # GreedyQPolicy equivalent
+            action, _ = model.predict(obs, deterministic=True)
             obs, reward, terminated, truncated, info = env.step(int(action))
             done = terminated or truncated
             ep_reward += float(reward)
