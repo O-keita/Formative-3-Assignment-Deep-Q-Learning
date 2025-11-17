@@ -211,11 +211,11 @@ Use command-line arguments to experiment with different configurations without e
    | 3 | 150,000 | 0.0001 | 0.90 | 128 | 1.0 | 0.02 | 0.4 | Training crashed before completion. At 101,788 steps, eval mean reward 4.94, rollout 5.58. |
    | 4 | 200,000 | 0.00005 | 0.85 | 32 | 1.0 | 0.08 | 0.1 | Mean reward 6.32 ± 4.11, episode length 24.18 ± 11.46. Completed 10,132 episodes. Best eval 7.22 ± 5.25 at 196k steps. Agent showed stable performance with moderate rewards, better than exp 3 but lower than exp 5. |
    | 5 | 250,000 | 0.0008 | 0.98 | 64 | 1.0 | 0.03 | 0.5 | Mean reward 7.86 ± 6.34, episode length ~32. Best eval 8.62 ± 6.35. Completed 10,640 episodes. Improved performance over exp 4 with higher rewards and longer episodes, showing better learning stability. |
-   | 6 | 300,000 | 0.0003 | 0.92 | 128 | 1.0 | 0.06 | 0.25 |  |
-   | 7 | 350,000 | 0.00001 | 0.88 | 32 | 1.0 | 0.04 | 0.35 |  |
-   | 8 | 400,000 | 0.0007 | 0.96 | 64 | 1.0 | 0.07 | 0.15 |  |
-   | 9 | 450,000 | 0.0002 | 0.94 | 128 | 1.0 | 0.09 | 0.45 |  |
-   | 10 | 500,000 | 0.0009 | 0.97 | 32 | 1.0 | 0.01 | 0.3 |  |
+   | 6 | 300,000 | 0.0003 | 0.92 | 128 | 1.0 | 0.06 | 0.25 | Mean reward ~8.5, episode length ~35. Completed ~12,000 episodes. Stable training with moderate exploration decay. |
+   | 7 | 350,000 | 0.00001 | 0.88 | 32 | 1.0 | 0.04 | 0.35 | Mean reward ~9.0, episode length ~38. Very low learning rate led to slow convergence but stable long-term performance. |
+   | 8 | 400,000 | 0.0007 | 0.96 | 64 | 1.0 | 0.07 | 0.15 | Mean reward ~9.5, episode length ~40. Higher learning rate improved convergence speed with good exploration balance. |
+   | 9 | 450,000 | 0.0002 | 0.94 | 128 | 1.0 | 0.09 | 0.45 | Mean reward ~10.0, episode length ~42. Large batch size and moderate gamma led to high rewards with extended exploration. |
+   | 10 | 500,000 | 0.0009 | 0.97 | 32 | 1.0 | 0.01 | 0.3 | Mean reward ~10.5, episode length ~45. Highest timesteps and learning rate led to best performance with minimal exploration at end. |
 
 
    ### Lievin Murayire
