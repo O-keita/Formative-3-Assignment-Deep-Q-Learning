@@ -11,20 +11,20 @@ from stable_baselines3.common.evaluation import evaluate_policy
 # Config / Hyperparameters
 #========================================================
 ENV_ID = "ALE/Riverraid-v5"
-N_ENVS = 4
+N_ENVS = 1
 N_STACK = 4
 SEED = 42
-TIMESTEPS =300_000
+TIMESTEPS =2_000_000
 
 # Hyperparameters for this run
-LEARNING_RATE = 3e-4
-BATCH_SIZE = 128
-GAMMA = 0.79
-EXPLORATION_FRACTION = 0.5 #decay
+LEARNING_RATE = 1e-4
+BATCH_SIZE = 32
+GAMMA = 0.99
+EXPLORATION_FRACTION = 0.1 #decay
 
-CHECKPOINT_FREQ = 10_000
-EVAL_FREQ = 1_000
-N_EVAL_EPISODES = 50  
+CHECKPOINT_FREQ = 15_000
+EVAL_FREQ = 10_000
+N_EVAL_EPISODES = 1_000
 
 #========================================================
 # Environment Setup Function
@@ -34,7 +34,7 @@ def make_env(env_id, n_envs=N_ENVS, n_stack=N_STACK, seed=SEED):
     A vectorized Atari environment with frame stacking and monitoring.
     """
     env = make_atari_env(env_id, n_envs=n_envs, seed=seed)
-    env = VecMonitor(env)
+    env = VecMonitor(env)                                                                                                                                                             
     env = VecFrameStack(env, n_stack=n_stack)
     print(f"Environment '{env_id}' ready: {n_envs} envs, {n_stack}-frame stack")
     return env
@@ -54,14 +54,14 @@ def train_dqn(policy_name="CnnPolicy", env_id=ENV_ID):
         env=train_env,
         learning_rate=LEARNING_RATE,
         batch_size=BATCH_SIZE,
-        buffer_size=80_000,
-        learning_starts=60_000,
-        target_update_interval=10000,
+        buffer_size=200_000,
+        learning_starts=40_000,
+        target_update_interval=10_000,
         exploration_initial_eps=1.0,
         train_freq=4,
         gamma=GAMMA,
         exploration_fraction=EXPLORATION_FRACTION,
-        exploration_final_eps=0.02,
+        exploration_final_eps=0.01,
         verbose=1,
         tensorboard_log="logs/"
     )
